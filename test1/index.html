@@ -1,16 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-
-    <!-- Viewport for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Todo Dashboard</title>
 
     <style>
-        /* Basic styling */
         * {
             box-sizing: border-box;
         }
@@ -42,7 +40,7 @@
             margin: auto;
         }
 
-        /* Mobile-first: one column */
+        /* One column on mobile phones */
         #todo-list {
             display: grid;
             grid-template-columns: 1fr;
@@ -71,7 +69,7 @@
             color: #666;
         }
 
-        /* Two columns on larger screens */
+        /* Two columns on screens 768px and wider */
         @media (min-width: 768px) {
             #todo-list {
                 grid-template-columns: repeat(2, 1fr);
@@ -89,15 +87,18 @@
 
     <header>
         <h1>Todo Dashboard</h1>
-
         <p id="count">Loading tasks...</p>
     </header>
 
     <main>
+
+        <h2>My Tasks</h2>
+
         <div id="message">Loading…</div>
 
         <section id="todo-list" aria-label="Todo tasks">
         </section>
+
     </main>
 
     <footer>
@@ -111,7 +112,7 @@
         const count = document.getElementById("count");
         const message = document.getElementById("message");
 
-        // Function to fetch and display todos
+        // Fetch and display todos
         async function loadTodos() {
 
             try {
@@ -135,7 +136,7 @@
                 // Remove loading message
                 message.textContent = "";
 
-                // Calculate completed tasks
+                // Count completed tasks
                 const completed = todos.filter(
                     todo => todo.completed
                 ).length;
@@ -185,6 +186,7 @@
                 console.error("Error:", error);
 
             }
+
         }
 
         // Start loading todos
